@@ -38,7 +38,7 @@ let computerChoicesIndex = 0;
 
 
 //function to generate question and answers
-function currentQa(){
+function currentQA(){
     //if there's another question and set of answers then the next set appears
     if (computerChoicesIndex < computerChoices.length){
         questionE1.innerHTML = computerChoices[computerChoicesIndex].q;
@@ -55,6 +55,16 @@ function currentQa(){
 
 //function to change the p element with a class of button into a bootstrap button
 function leaderboardAppear(){
-    
 
 }
+
+//function to change button appearance to green if chosen button is correct answer
+function changeButtonToGreen(){
+
+}
+
+//function to change button appearance to red if chosen button is incorrect answer
+function changeButtonToRed(){
+
+}
+
