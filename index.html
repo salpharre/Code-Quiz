@@ -13,26 +13,39 @@
 
     <!--container includes quiz, form and leaderboard-->
     <div class="container">
-        <div class="row">
-            <h1 class="question-text">Question</h1>
-    <!--Reminder!! p class is for bootstrap positioning and such-->
-            <p class="hide">Score: <span class="score">0</span></p>
-        </div>
-        <div class="row answers">
-            <!--data attribute-->
-            <button type="button" class="btn btn-primary question-one choice hide" data-choice="a1">Question One</button>
-            <p class="textarea"></p>
-        </div>
-        <div class="row answers">
-            <button type="button" class="btn btn-primary question-two choice hide" data-choice="a2">Question Two</button>
-        </div>
-        <div class="row answers">
-            <button type="button" class="btn btn-primary question-three choice hide" data-choice="a3">Question Three</button>
-        </div>
-        <div class="row">
-            <form class="form-inline">
-                <div class="timer"></div>
-            </form>
+        <div class="card border-0">
+            <div class="card-body">
+                <div class="row">
+                    <h1 class="question-text d-inline-flex">Question</h1>
+                </div>
+                <div class="row">
+            <!--Reminder!! p class is for bootstrap positioning and such-->
+                    <p class="hide">Score: <span class="score">0</span></p>  
+                </div>
+                <div class="row answers">
+                    <!--data attribute-->
+                    <button type="button" class="btn btn-primary question-one mt-2 choice hide" data-choice="a1">Question One</button>
+                    <p class="textarea"></p>
+                    <p class="name pl-2"></p>
+                </div>
+                <div class="row answers">
+                    <button type="button" class="btn btn-primary question-two mt-2 choice" data-choice="a2">Question Two</button>
+                </div>
+                <div class="row answers">
+                    <button type="button" class="btn btn-primary question-three mt-2 choice" data-choice="a3">Question Three</button>
+                </div>
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="div">
+                            <div class="div2"></div>
+                        <div class="div3 mt-2"></div>
+
+                    <!--for the timer, is removed once "Game Over" page appears--> 
+                        <div class="timer mt-2"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

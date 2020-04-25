@@ -123,7 +123,6 @@ function currentQA(){
 
 startTimer();
 
-
 }
 currentQA();
 
@@ -138,66 +137,48 @@ function leaderboardAppear(){
    questionOneE1.remove();
    questionTwoE1.remove();
    questionThreeE1.remove();
+   questionTimerE1.remove();
    
    
     //retrieve score stored in local storage and deposit in textarea
     textAreaE1.textContent = localStorage.getItem("savedScores")
     
-    //add class names to form tag
-    //body.children[0].children[4].firstChild.setAttribute("class", "form-inline");
-  
+
+    
+    let body = document.getElementsByTagName("body")[0];
+
     //creat new div to nestle under form tag
     let div = document.createElement("div");
     div.setAttribute("class", "form-group mx-sm-3 mb-2");
-    body.children[0].children[4].firstChild.appendChild(div);
+    document.querySelector(".div").appendChild(div);
 
     //create new input tag nestled under new div
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("class", "form-control");
     input.setAttribute("placeholder", "Name Here");
-    body.children[0].children[4].children[0].firstChild.firstChild.appendChild(input);
+    document.querySelector(".div2").appendChild(input);
     
     //button, sibling to new div, child to form tag
     let button = document.createElement("button")
     button.textContent = "Submit";
     button.setAttribute("type", "submit");
     button.setAttribute("class", "btn btn-primary mb-2");
-    body.children[0].children[4].firstChild.appendChild(button);
+
+    //everytime button is clicked the function is called
+    button.addEventListener("click", appendNameToScore); 
+    document.querySelector(".div3").appendChild(button);
 
     
-  
-    //submit button for name to print onto page
-    function saveName(){
+    function appendNameToScore(event){
         event.preventDefault();
-        questionTimerE1.value = "";
+        let formValue = document.querySelector(".form-control").value
+        //let nameStorage = localStorage.getItem("name")
+        document.querySelector(".name").textContent = formValue;
 
     }
-    //mechanism to print name onto page
-    function typeYourName(event){
-        let key = event.key.toLowerCase();
-        let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-
-        if (alphabet.includes(key)){
-            textAreaE1.textContent += localStorage.getItem("savedScores") + ":" + event.key 
-        }
-
 }
 
-
-
-
-}
-
-//alert user that the answer was correct or incorrect
-/*function alertAnswer(userGuess){
-    let target = event.target;
-    if (target.class === "question-one"){
-        alert("correct!")
-    } else {
-        alert("wrong!");
-    }
-}*/
 
 
 //function to change button appearance to green if chosen button is correct answer
@@ -234,12 +215,12 @@ choiceOne.forEach(function(btn){
       if (userGuess === computerChoices[computerChoicesIndex].answer){
         score++;
         scoreIncreases();
-        console.log("correct!")
+        alert("correct!")
         
         localStorage.setItem("savedScores", score);
     }
     else if (userGuess !== computerChoices[computerChoicesIndex].answer){
-        console.log("wrong!");
+        alert("wrong!");
     }
 
     computerChoicesIndex++;
@@ -247,53 +228,3 @@ choiceOne.forEach(function(btn){
     currentQA();
     })
 })
-
-
-/*answersTextE1.addEventListener("click", function(event){
-    let target = event.target;
-    if (userGuess === computerChoices[computerChoicesIndex].answer){
-        alertAnswer();
-        score++;
-        scoreIncreases();
-        
-        localStorage.setItem("savedScores", score);
-    }
-    else if (target.class === "questionTwoE1" || target.class === "questionThreeE1"){
-        alertAnswer();
-    }
-
-    computerChoicesIndex++;
-    resetTime();
-    currentQA();
-    
-}); */
-
-
-
-
-
-//seperate function and addeventlistner seperate
-
-
-
-
-function gameOver(){
-    if (timer === 0){
-
-    } 
-    //else if (){
-
-    //}
-}
-
-//questionOneE1.addEventListener("click", correctAnswer);
-
-//questionTwoE1.addEventListener("click", correctAnswer);
-
-//questionThreeE1.addEventListener("click", correctAnswer);
-
-//questionThreeE1.addEventListener("click", wrongAnswer);
-
-//submitButton.addEventListener("submit", saveName);
-
-//questionTimerE1.addEventListener("", );
