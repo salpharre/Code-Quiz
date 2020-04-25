@@ -4,7 +4,6 @@ let questionOneE1 = document.querySelector(".question-one");
 let questionTwoE1 = document.querySelector(".question-two");
 let questionThreeE1 = document.querySelector(".question-three");
 let questionTimerE1 = document.querySelector(".timer");
-let submitButton = document.querySelector(".button");
 let scoreE1 = document.querySelector(".score");
 let hidePTag = document.querySelector(".hide");
 let textAreaE1 = document.querySelector(".textarea");
@@ -114,30 +113,62 @@ currentQA();
 //function to change the p element with a class of button into a bootstrap button
 function leaderboardAppear(){
     //change h1 text to Game. Over.
-    //hide score, set it to ""
-    //remove/hide all three buttons, leave p tag
-    //textarea.textContent = localStorage.getItem("savedScores")
-    //change timer into a bootstrap form
-    //button (below timer) becomes a bootstrap button
-    //add a <p> to third row and give it a class of textarea
+    questionE1.textContent = "Game" + ". " + "Over" + "."
+
+    //hide p tag that holds score
+    hidePTag.textContent = "";
     
-}
+    //hide buttons
+    questionOneE1.textContent = "";
+    questionTwoE1.textContent = "";
+    questionThreeE1.textContent = "";
+    
+    //retrieve score stored in local storage and deposit in textarea
+    textarea.textContent = localStorage.getItem("savedScores")
+    
+    //add class names that turns form tag into a bootstrap form tag
+    body.children[0].children[4].children[0].setAttribute("class", "form-inline");
+    let div = document.createElement("div");
+    div.setAttribute("class", "form-group mx-sm-3 mb-2");
+    body.children[0].children[4].children[0].appendChild(div);
 
-function saveName(){
-    event.preventDefault();
-    questionTimerE1.value = "";
+    //
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("class", "form-control");
+    input.setAttribute("placeholder", "Name Here");
+    body.children[0].children[4].children[0].firstChild.appendChild(input);
+    
+    //
+    let button = document.createElement("button")
+    button.textContent = "Submit";
+    button.setAttribute("type", "submit");
+    button.setAttribute("class", "btn btn-primary mb-2");
 
-}
+  
+    //submit button for name to print onto page
+    function saveName(){
+        event.preventDefault();
+        questionTimerE1.value = "";
 
-function typeYourName(event){
-    let key = event.key.toLowerCase();
-    let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-
-    if (alphabet.includes(key)){
-        textAreaE1.textContent += event.key
     }
+    //mechanism to print name onto page
+    function typeYourName(event){
+        let key = event.key.toLowerCase();
+        let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+
+        if (alphabet.includes(key)){
+            textAreaE1.textContent += event.key
+        }
+
 }
 
+
+
+
+}
+
+//alert user that the answer was correct or incorrect
 function alertAnswer(event){
     let target = event.target;
     if (target.class === "question-one"){
@@ -195,14 +226,14 @@ function gameOver(){
     //}
 }
 
-questionOneE1.addEventListener("click", correctAnswer);
+//questionOneE1.addEventListener("click", correctAnswer);
 
-questionTwoE1.addEventListener("click", correctAnswer);
+//questionTwoE1.addEventListener("click", correctAnswer);
 
-questionThreeE1.addEventListener("click", correctAnswer);
+//questionThreeE1.addEventListener("click", correctAnswer);
 
 //questionThreeE1.addEventListener("click", wrongAnswer);
 
-submitButton.addEventListener("submit", saveName);
+//submitButton.addEventListener("submit", saveName);
 
-questionTimerE1.addEventListener("", );
+//questionTimerE1.addEventListener("", );
