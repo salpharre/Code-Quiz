@@ -28,10 +28,10 @@ let computerChoices = [
         a3: "North"
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: ""
+        q: "Are JavaScript and Java the same?",
+        a1: "No",
+        a2: "Yes",
+        a3: "Yes"
     },
     {
         q: "",
@@ -113,15 +113,24 @@ currentQA();
 //function to change the p element with a class of button into a bootstrap button
 function leaderboardAppear(){
     //change h1 text to Game. Over.
-    questionE1.textContent = "Game" + ". " + "Over" + "."
+    questionE1.textContent = "Game" + ". " + "Over" + ".";
+
+    function hide(event){
+        event.target.style.visibility = "hidden";
+    }
+
+    hidePTag.addEventListener('click', hide, false);
+    questionOneE1.addEventListener('click', hide, false);
+    questionTwoE1.addEventListener('click', hide, false);
+    questionThreeE1.addEventListener('click', hide, false);
 
     //hide p tag that holds score
-    hidePTag.textContent = "";
+    //hidePTag.textContent = "";
     
     //hide buttons
-    questionOneE1.textContent = "";
-    questionTwoE1.textContent = "";
-    questionThreeE1.textContent = "";
+    //questionOneE1.textContent = "";
+    //questionTwoE1.textContent = "";
+    //questionThreeE1.textContent = "";
     
     //retrieve score stored in local storage and deposit in textarea
     textarea.textContent = localStorage.getItem("savedScores")
