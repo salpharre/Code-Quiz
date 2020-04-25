@@ -7,6 +7,9 @@ let questionTimerE1 = document.querySelector(".timer");
 let submitButton = document.querySelector(".button");
 let scoreE1 = document.querySelector(".score");
 
+//empty array to propagate the scores in, to add to leaderboard
+let savedScores = [];
+
 
 //array of objects, array of questions and answers
 let computerChoices = [
