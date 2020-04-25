@@ -39,12 +39,12 @@ let score = 0;
 let timer = 100;
 
 //timer function to start and change every second
-function setTimer(){
+function startTimer(){
     let timeLeft = setInterval(function(){
-        questionTimerE1.textcontent = "Timer: " + timer
+        timerDecreases();
 
         if (timer === 0){
-            //questionTimerE1.textContent = "";
+            questionTimerE1.textContent = "";
             clearInterval(timeLeft);
             leaderboardAppear();
         }
@@ -93,7 +93,7 @@ function scoreIncreases(){
 }
 
 function timerDecreases(){
-    questionTimerE1.textContent = timer;
+    questionTimerE1.textContent = "Timer: " + timer;
 }
 
 function correctAnswer(){
@@ -102,7 +102,7 @@ function correctAnswer(){
         //score += 1
         //call scoreIncreases  
     } 
-    
+
     //computerChoicesIndex += 1
     //call currentQA
 }
@@ -116,6 +116,10 @@ function wrongAnswer(){
     }
     //computerChoicesIndex += 1
     //call currentQA
+}
+
+function gameOver(){
+
 }
 
 questionTwoE1.addEventListener("click", correctAnswer);
