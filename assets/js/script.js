@@ -112,15 +112,15 @@ currentQA();
 function leaderboardAppear(){
     //change h1 text to Game. Over.
     //hide score, set it to ""
-    //remove all three buttons, leave the p tag
+    //remove/hide all three buttons, leave p tag
     //textarea.textContent = localStorage.getItem("savedScores")
     //change timer into a bootstrap form
-    //clear button (below timer) becomes a bootstrap button
+    //button (below timer) becomes a bootstrap button
     //add a <p> to third row and give it a class of textarea
     
 }
 
-function clearButton(){
+function saveName(){
     event.preventDefault();
     questionTimerE1.value = "";
 
@@ -135,15 +135,26 @@ function typeYourName(event){
     }
 }
 
-//function to change button appearance to green if chosen button is correct answer
-function changeButtonToGreen(){
-    
+function changeButtonColor(){
+    if (questionOneE1){
+        questionOneE1.setAttribute("class", "btn-success");
+    } else {
+        questionTwoE1.setAttribute("class", "btn-danger");
+        questionThreeE1.setAttribute("class", "btn-danger");
+    }
 }
+
+
+//function to change button appearance to green if chosen button is correct answer
+//function changeButtonToGreen(){
+    //questionOneE1.setAttribute("class", "btn-success");
+//}
 
 //function to change button appearance to red if chosen button is incorrect answer
-function changeButtonToRed(){
-
-}
+//function changeButtonToRed(){
+    //questionTwoE1.setAttribute("class", "btn-danger");
+    //questionThreeE1.setAttribute("class", "btn-danger");
+//}
 
 function scoreIncreases(){
     scoreE1.textContent = score;
@@ -154,37 +165,34 @@ function timerDecreases(){
 }
 
 function correctAnswer(){
-        //call changeButtonToGreen
-        //score += 1
-        //call scoreIncreases 
+    if (questionOneE1){
+        changeButtonColor();
+        score++;
+        scoreIncreases();
         
-        //localStorage.setItem("savedScores", score)
-   
-        //computerChoicesIndex += 1
-        //call currentQA
+        localStorage.setItem("savedScores", score);
+    }
+    else {
+        timer -= 10;
+        timerDecreases();
+        changeButtonColor();
+    }
 
-    } 
-
-    
-function wrongAnswer(){
-        //timer -= 10
-        //call timerDecreases
-        //call changeButtonToRed
-
-    //computerChoicesIndex += 1
-    //call currentQA
-}
+    computerChoicesIndex++;
+    currentQA();
+} 
 
 function gameOver(){
+    if (timer === 0){
 
+    } 
+    else if 
 }
 
 questionTwoE1.addEventListener("click", correctAnswer);
 
-questionTwoE1.addEventListener("click", wrongAnswer);
-
 questionThreeE1.addEventListener("click", wrongAnswer);
 
-submitButton.addEventListener("submit", submitName);
+submitButton.addEventListener("submit", saveName);
 
 questionTimerE1.addEventListener("", );
