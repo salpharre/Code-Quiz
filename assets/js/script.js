@@ -38,11 +38,20 @@ let score = 0;
 //variable for timer, game starts with 100 secs
 let timer = 100;
 
-//
+//timer function to start and change every second
 function setTimer(){
-    
-}
+    let timeLeft = setInterval(function(){
+        questionTimerE1.textcontent = "Timer: " + timer
 
+        if (timer === 0){
+            //questionTimerE1.textContent = "";
+            clearInterval(timeLeft);
+            leaderboardAppear();
+        }
+
+}, 1000);
+
+}
 
 //variable for index of current question
 let computerChoicesIndex = 0;
@@ -104,8 +113,19 @@ function correctAnswer(){
     //call currentQA
 }
 
+function wrongAnswer(){
+    if (computerChoices.a1 !== true){
+        //timer -= 10
+        //call timerDecreases
+        //call changeButtonToRed
+
+    }
+    //computerChoicesIndex += 1
+    //call currentQA
+}
+
 questionTwoE1.addEventListener("click", correctAnswer);
 
-questionTwoE1.addEventListener("click", );
+questionTwoE1.addEventListener("click", wrongAnswer);
 
-questionThreeE1.addEventListener("click", );
+questionThreeE1.addEventListener("click", wrongAnswer);
