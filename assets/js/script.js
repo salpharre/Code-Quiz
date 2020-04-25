@@ -1,5 +1,5 @@
 //creating variables to grab classes
-let questionE1 = document.querySelector(".question");
+let questionE1 = document.querySelector(".question-text");
 let questionOneE1 = document.querySelector(".question-one");
 let questionTwoE1 = document.querySelector(".question-two");
 let questionThreeE1 = document.querySelector(".question-three");
@@ -8,6 +8,7 @@ let submitButton = document.querySelector(".button");
 let scoreE1 = document.querySelector(".score");
 let hidePTag = document.querySelector(".hide");
 let textAreaE1 = document.querySelector(".textarea");
+let answersTextE1 = document.querySelector(".answers");
 
 //saves scores to local storage, to retrieve later at leaderboardAppear function
 //let savedScores = localStorage.;
@@ -16,9 +17,9 @@ let textAreaE1 = document.querySelector(".textarea");
 //array of objects, array of questions and answers
 let computerChoices = [
     {
-        q: "How many planets are in the solar system?",
-        a1: "Nine",
-        a2: "Eight",
+        q: "There are three main things essential to a webpage, including CSS and HTML, what is the third?",
+        a1: "JavaScript",
+        a2: "jQuery",
         a3: "Dunno"
     },
     {
@@ -72,6 +73,8 @@ let score = 0;
 
 //variable for timer, game starts with 100 secs
 let timer = 100;
+
+questionTimerE1.textContent = "Timer: " + timer
 
 //timer function to start and change every second
 function startTimer(){
@@ -135,12 +138,12 @@ function typeYourName(event){
     }
 }
 
-function changeButtonColor(){
-    if (questionOneE1){
-        questionOneE1.setAttribute("class", "btn-success");
+function alertAnswer(event){
+    let target = event.target;
+    if (target.class === "question-one"){
+        alert("correct!")
     } else {
-        questionTwoE1.setAttribute("class", "btn-danger");
-        questionThreeE1.setAttribute("class", "btn-danger");
+        alert("wrong!");
     }
 }
 
@@ -164,34 +167,41 @@ function timerDecreases(){
     questionTimerE1.textContent = "Timer: " + timer;
 }
 
-function correctAnswer(){
-    if (questionOneE1){
-        changeButtonColor();
+answersTextE1.addEventListener("click", function(event){
+    let target = event.target;
+    if (target.class === "question-one"){
+        alertAnswer();
         score++;
         scoreIncreases();
         
         localStorage.setItem("savedScores", score);
     }
-    else {
-        timer -= 10;
+    else if (target.class === "questionTwoE1" || target.class === "questionThreeE1"){
+        timer--;
         timerDecreases();
-        changeButtonColor();
+        alertAnswer();
     }
 
     computerChoicesIndex++;
     currentQA();
-} 
+}); 
 
 function gameOver(){
     if (timer === 0){
 
     } 
-    else if 
+    //else if (){
+
+    //}
 }
+
+questionOneE1.addEventListener("click", correctAnswer);
 
 questionTwoE1.addEventListener("click", correctAnswer);
 
-questionThreeE1.addEventListener("click", wrongAnswer);
+questionThreeE1.addEventListener("click", correctAnswer);
+
+//questionThreeE1.addEventListener("click", wrongAnswer);
 
 submitButton.addEventListener("submit", saveName);
 
