@@ -97,23 +97,21 @@ function timerDecreases(){
 }
 
 function correctAnswer(){
-    if (computerChoices.a1 === true){
         //call changeButtonToGreen
         //score += 1
         //call scoreIncreases  
+   
+        //computerChoicesIndex += 1
+        //call currentQA
+
     } 
 
-    //computerChoicesIndex += 1
-    //call currentQA
-}
-
+    
 function wrongAnswer(){
-    if (computerChoices.a1 !== true){
         //timer -= 10
         //call timerDecreases
         //call changeButtonToRed
 
-    }
     //computerChoicesIndex += 1
     //call currentQA
 }
