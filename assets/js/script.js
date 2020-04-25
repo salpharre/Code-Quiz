@@ -8,10 +8,7 @@ let scoreE1 = document.querySelector(".score");
 let hidePTag = document.querySelector(".hide");
 let textAreaE1 = document.querySelector(".textarea");
 let answersTextE1 = document.querySelector(".answers");
-
-//saves scores to local storage, to retrieve later at leaderboardAppear function
-//let savedScores = localStorage.;
-
+ 
 
 //array of objects, array of questions and answers
 let computerChoices = [
@@ -45,30 +42,38 @@ let computerChoices = [
         answer:"a1",
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: ""
+        q: "What year was JavaScript invented?",
+        a1: "1995",
+        a2: "2005",
+        a3: "1985",
+        answer:"a1",
     },
     {
         q: "",
         a1: "",
         a2: "",
-        a3: ""
+        a3: "",
+        answer:"a1",
     },
     {
         q: "",
         a1: "",
         a2: "",
-        a3: ""
+        a3: "",
+        answer:"a1",
     },
     {
         q: "",
         a1: "",
         a2: "",
-        a3: ""
+        a3: "",
+        answer:"a1",
     },
 ];
+
+
+//saves scores to local storage, to retrieve later at leaderboardAppear function
+let savedScores = localStorage.getItem("savedScores");
 
 //variable for score
 let score = 0;
@@ -97,7 +102,7 @@ function startTimer(){
 
 }
 
-//variable for index of current question
+//variable for index of current question and answer
 let computerChoicesIndex = 0;
 
 
@@ -127,45 +132,40 @@ function leaderboardAppear(){
     //change h1 text to Game. Over.
     questionE1.textContent = "Game" + ". " + "Over" + ".";
 
-    function hide(event){
-        event.target.style.visibility = "hidden";
-    }
 
-    hidePTag.addEventListener('click', hide, false);
-    questionOneE1.addEventListener('click', hide, false);
-    questionTwoE1.addEventListener('click', hide, false);
-    questionThreeE1.addEventListener('click', hide, false);
-
-    //hide p tag that holds score
-    //hidePTag.textContent = "";
-    
-    //hide buttons
-    //questionOneE1.textContent = "";
-    //questionTwoE1.textContent = "";
-    //questionThreeE1.textContent = "";
-    
+   //remove pTag and questions
+   hidePTag.remove();
+   questionOneE1.remove();
+   questionTwoE1.remove();
+   questionThreeE1.remove();
+   
+   
     //retrieve score stored in local storage and deposit in textarea
-    textarea.textContent = localStorage.getItem("savedScores")
+    textAreaE1.textContent = localStorage.getItem("savedScores")
     
-    //add class names that turns form tag into a bootstrap form tag
-    body.children[0].children[4].children[0].setAttribute("class", "form-inline");
+    //add class names to form tag
+    //body.children[0].children[4].firstChild.setAttribute("class", "form-inline");
+  
+    //creat new div to nestle under form tag
     let div = document.createElement("div");
     div.setAttribute("class", "form-group mx-sm-3 mb-2");
-    body.children[0].children[4].children[0].appendChild(div);
+    body.children[0].children[4].firstChild.appendChild(div);
 
-    //
+    //create new input tag nestled under new div
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("class", "form-control");
     input.setAttribute("placeholder", "Name Here");
-    body.children[0].children[4].children[0].firstChild.appendChild(input);
+    body.children[0].children[4].children[0].firstChild.firstChild.appendChild(input);
     
-    //
+    //button, sibling to new div, child to form tag
     let button = document.createElement("button")
     button.textContent = "Submit";
     button.setAttribute("type", "submit");
     button.setAttribute("class", "btn btn-primary mb-2");
+    body.children[0].children[4].firstChild.appendChild(button);
 
+    
   
     //submit button for name to print onto page
     function saveName(){
@@ -179,7 +179,7 @@ function leaderboardAppear(){
         let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
         if (alphabet.includes(key)){
-            textAreaE1.textContent += event.key
+            textAreaE1.textContent += localStorage.getItem("savedScores") + ":" + event.key 
         }
 
 }
@@ -228,16 +228,18 @@ let choiceOne = document.querySelectorAll(".choice");
 //for loop for each of the btns in the choiceOne array
 choiceOne.forEach(function(btn){
     btn.addEventListener("click", function(event){
+//setting userGuess to a string that represents choice property of object btn
+//setting userGuess for buttons clicked
       let userGuess = event.target.dataset.choice
       if (userGuess === computerChoices[computerChoicesIndex].answer){
         score++;
         scoreIncreases();
-        alert("correct!")
+        console.log("correct!")
         
         localStorage.setItem("savedScores", score);
     }
     else if (userGuess !== computerChoices[computerChoicesIndex].answer){
-        alert("wrong!");
+        console.log("wrong!");
     }
 
     computerChoicesIndex++;
