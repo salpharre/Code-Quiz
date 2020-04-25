@@ -38,6 +38,7 @@ let score = 0;
 //variable for timer, game starts with 100 secs
 let timer = 100;
 
+//
 function setTimer(){
     
 }
