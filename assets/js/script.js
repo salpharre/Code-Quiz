@@ -19,25 +19,30 @@ let computerChoices = [
         q: "There are three main things essential to a webpage, including CSS and HTML, what is the third?",
         a1: "JavaScript",
         a2: "jQuery",
-        a3: "Dunno"
+        a3: "Dunno",
+        answer:"a1",
     },
     {
         q: "In what direction does the sun rise?",
         a1: "East",
         a2: "West",
-        a3: "North"
+        a3: "North",
+        answer:"a1",
+        
     },
     {
         q: "Are JavaScript and Java the same?",
         a1: "No",
         a2: "Yes",
-        a3: "Yes"
+        a3: "Yes",
+        answer:"a1",
     },
     {
         q: "Is JavaScript a programming language?",
         a1: "Yes",
         a2: "No",
-        a3: "What's JavaScript?"
+        a3: "What's JavaScript?",
+        answer:"a1",
     },
     {
         q: "",
@@ -63,7 +68,6 @@ let computerChoices = [
         a2: "",
         a3: ""
     },
-
 ];
 
 //variable for score
@@ -75,9 +79,12 @@ let timer = 100;
 
 questionTimerE1.textContent = "Timer: " + timer
 
+let timeLeft;
+
 //timer function to start and change every second
 function startTimer(){
-    let timeLeft = setInterval(function(){
+    timeLeft = setInterval(function(){
+        timer--;
         timerDecreases();
 
         if (timer === 0){
@@ -107,6 +114,11 @@ function currentQA(){
     else {
         leaderboardAppear();
     }
+
+
+startTimer();
+
+
 }
 currentQA();
 
@@ -178,14 +190,14 @@ function leaderboardAppear(){
 }
 
 //alert user that the answer was correct or incorrect
-function alertAnswer(event){
+/*function alertAnswer(userGuess){
     let target = event.target;
     if (target.class === "question-one"){
         alert("correct!")
     } else {
         alert("wrong!");
     }
-}
+}*/
 
 
 //function to change button appearance to green if chosen button is correct answer
@@ -207,9 +219,37 @@ function timerDecreases(){
     questionTimerE1.textContent = "Timer: " + timer;
 }
 
-answersTextE1.addEventListener("click", function(event){
+function resetTime(){
+    clearInterval(timeLeft);
+    timer = 100;
+}
+
+let choiceOne = document.querySelectorAll(".choice");
+//for loop for each of the btns in the choiceOne array
+choiceOne.forEach(function(btn){
+    btn.addEventListener("click", function(event){
+      let userGuess = event.target.dataset.choice
+      if (userGuess === computerChoices[computerChoicesIndex].answer){
+        score++;
+        scoreIncreases();
+        alert("correct!")
+        
+        localStorage.setItem("savedScores", score);
+    }
+    else if (userGuess !== computerChoices[computerChoicesIndex].answer){
+        alert("wrong!");
+    }
+
+    computerChoicesIndex++;
+    resetTime();
+    currentQA();
+    })
+})
+
+
+/*answersTextE1.addEventListener("click", function(event){
     let target = event.target;
-    if (target.class === "question-one"){
+    if (userGuess === computerChoices[computerChoicesIndex].answer){
         alertAnswer();
         score++;
         scoreIncreases();
@@ -217,14 +257,23 @@ answersTextE1.addEventListener("click", function(event){
         localStorage.setItem("savedScores", score);
     }
     else if (target.class === "questionTwoE1" || target.class === "questionThreeE1"){
-        timer--;
-        timerDecreases();
         alertAnswer();
     }
 
     computerChoicesIndex++;
+    resetTime();
     currentQA();
-}); 
+    
+}); */
+
+
+
+
+
+//seperate function and addeventlistner seperate
+
+
+
 
 function gameOver(){
     if (timer === 0){
