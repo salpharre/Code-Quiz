@@ -6,9 +6,11 @@ let questionThreeE1 = document.querySelector(".question-three");
 let questionTimerE1 = document.querySelector(".timer");
 let submitButton = document.querySelector(".button");
 let scoreE1 = document.querySelector(".score");
+let hidePTag = document.querySelector(".hide");
+let textAreaE1 = document.querySelector(".textarea");
 
-//empty array to propagate the scores in, to add to leaderboard
-let savedScores = [];
+//saves scores to local storage, to retrieve later at leaderboardAppear function
+//let savedScores = localStorage.;
 
 
 //array of objects, array of questions and answers
@@ -20,10 +22,10 @@ let computerChoices = [
         a3: "Dunno"
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: ""
+        q: "In what direction does the sun rise?",
+        a1: "East",
+        a2: "West",
+        a3: "North"
     },
     {
         q: "",
@@ -108,12 +110,34 @@ currentQA();
 
 //function to change the p element with a class of button into a bootstrap button
 function leaderboardAppear(){
+    //change h1 text to Game. Over.
+    //hide score, set it to ""
+    //remove all three buttons, leave the p tag
+    //textarea.textContent = localStorage.getItem("savedScores")
+    //change timer into a bootstrap form
+    //clear button (below timer) becomes a bootstrap button
+    //add a <p> to third row and give it a class of textarea
+    
+}
 
+function clearButton(){
+    event.preventDefault();
+    questionTimerE1.value = "";
+
+}
+
+function typeYourName(event){
+    let key = event.key.toLowerCase();
+    let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+
+    if (alphabet.includes(key)){
+        textAreaE1.textContent += event.key
+    }
 }
 
 //function to change button appearance to green if chosen button is correct answer
 function changeButtonToGreen(){
-
+    
 }
 
 //function to change button appearance to red if chosen button is incorrect answer
@@ -132,7 +156,9 @@ function timerDecreases(){
 function correctAnswer(){
         //call changeButtonToGreen
         //score += 1
-        //call scoreIncreases  
+        //call scoreIncreases 
+        
+        //localStorage.setItem("savedScores", score)
    
         //computerChoicesIndex += 1
         //call currentQA
@@ -158,3 +184,7 @@ questionTwoE1.addEventListener("click", correctAnswer);
 questionTwoE1.addEventListener("click", wrongAnswer);
 
 questionThreeE1.addEventListener("click", wrongAnswer);
+
+submitButton.addEventListener("submit", submitName);
+
+questionTimerE1.addEventListener("", );
