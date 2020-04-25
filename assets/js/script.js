@@ -102,13 +102,7 @@ function correctAnswer(){
         //score += 1
         //call scoreIncreases  
     } 
-
-    else {
-        //timer -= 10
-        //call timerDecreases
-        //call changeButtonToRed
-
-    }
+    
     //computerChoicesIndex += 1
     //call currentQA
 }
