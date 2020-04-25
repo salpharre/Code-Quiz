@@ -34,10 +34,10 @@ let computerChoices = [
         a3: "Yes"
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: ""
+        q: "Is JavaScript a programming language?",
+        a1: "Yes",
+        a2: "No",
+        a3: "What's JavaScript?"
     },
     {
         q: "",
