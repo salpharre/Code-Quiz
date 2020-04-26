@@ -30,7 +30,7 @@ If you don't answer in 30 seconds, it's GAME OVER. Otherwise, see how many you c
 
 Original Launch Date: `April 25, 2020`
 
-(link to pages)
+https://salpharre.github.io/Code-Quiz/
 
 ##### Future Features
 
