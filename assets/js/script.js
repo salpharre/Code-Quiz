@@ -1,3 +1,4 @@
+
 //creating variables to grab classes
 let questionE1 = document.querySelector(".question-text");
 let questionOneE1 = document.querySelector(".question-one");
@@ -7,7 +8,6 @@ let questionTimerE1 = document.querySelector(".timer");
 let scoreE1 = document.querySelector(".score");
 let hidePTag = document.querySelector(".hide");
 let textAreaE1 = document.querySelector(".textarea");
-let answersTextE1 = document.querySelector(".answers");
  
 
 //array of objects, array of questions and answers
@@ -20,10 +20,10 @@ let computerChoices = [
         answer:"a1",
     },
     {
-        q: "In what direction does the sun rise?",
-        a1: "East",
-        a2: "West",
-        a3: "North",
+        q: "",
+        a1: "",
+        a2: "",
+        a3: "",
         answer:"a1",
         
     },
@@ -132,7 +132,7 @@ function leaderboardAppear(){
     questionE1.textContent = "Game" + ". " + "Over" + ".";
 
 
-   //remove pTag and questions
+   //remove pTag and question variables
    hidePTag.remove();
    questionOneE1.remove();
    questionTwoE1.remove();
@@ -178,19 +178,6 @@ function leaderboardAppear(){
 
     }
 }
-
-
-
-//function to change button appearance to green if chosen button is correct answer
-//function changeButtonToGreen(){
-    //questionOneE1.setAttribute("class", "btn-success");
-//}
-
-//function to change button appearance to red if chosen button is incorrect answer
-//function changeButtonToRed(){
-    //questionTwoE1.setAttribute("class", "btn-danger");
-    //questionThreeE1.setAttribute("class", "btn-danger");
-//}
 
 function scoreIncreases(){
     scoreE1.textContent = score;
