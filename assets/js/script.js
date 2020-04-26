@@ -17,13 +17,14 @@ let computerChoices = [
         a1: "JavaScript",
         a2: "jQuery",
         a3: "Dunno",
+        //names the correct answer in the array, and which is referred back to in a for loop for an addEventListener for the buttons
         answer:"a1",
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: "",
+        q: "JavaScript wasn't always it's name, what other names has it been released as?",
+        a1: "Mocha",
+        a2: "Latte",
+        a3: "Spidermonkey",
         answer:"a1",
         
     },
@@ -49,24 +50,24 @@ let computerChoices = [
         answer:"a1",
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: "",
+        q: "Who created JavaScript?",
+        a1: "Netscape",
+        a2: "Oracle",
+        a3: "Microsoft",
         answer:"a1",
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: "",
+        q: "How long did Brendan Eich take to write the JavaScript programming language?",
+        a1: "10 days",
+        a2: "2 months",
+        a3: "2 years",
         answer:"a1",
     },
     {
-        q: "",
-        a1: "",
-        a2: "",
-        a3: "",
+        q: "Is Null an object?",
+        a1: "Yes",
+        a2: "No",
+        a3: "what's an object?",
         answer:"a1",
     },
 ];
@@ -129,6 +130,8 @@ startTimer();
 
 }
 currentQA();
+//empties local storage at the beginning of a new game
+localStorage.clear();
 
 //function to clear buttons, timer and p tag to make room for form, submit button and printing score
 function leaderboardAppear(){

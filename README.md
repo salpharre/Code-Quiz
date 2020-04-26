@@ -34,4 +34,4 @@ Sources used for trivia portion of game:
 
 * geeksforgeeks: https://www.geeksforgeeks.org/interesting-facts-about-javascript/
 
-* 
+* jaxenter: https://jaxenter.com/know-your-javascript-trivia-134924.html

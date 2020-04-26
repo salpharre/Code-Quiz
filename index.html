@@ -7,23 +7,24 @@
     <!--link to bootstrap css-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>Code Quiz</title>
 </head>
 <body>
 
     <!--container includes quiz, form and leaderboard-->
     <div class="container">
+    
+    <!--card adds margin around the container-->
         <div class="card border-0">
             <div class="card-body">
                 <div class="row">
                     <h1 class="question-text d-inline-flex">Question</h1>
                 </div>
                 <div class="row">
-            <!--Reminder!! p class is for bootstrap positioning and such-->
                     <p class="hide">Score: <span class="score">0</span></p>  
                 </div>
                 <div class="row answers">
-                    <!--data attribute-->
+            <!--buttons with data attributes, these attributes are grabbed for a for loop for an addeventlistener for when the buttons are clicked-->
                     <button type="button" class="btn btn-primary question-one mt-2 choice hide" data-choice="a1">Question One</button>
                     <p class="textarea"></p>
                     <p class="name pl-2"></p>
@@ -35,12 +36,13 @@
                     <button type="button" class="btn btn-primary question-three mt-2 choice" data-choice="a3">Question Three</button>
                 </div>
                 <div class="row">
+            <!--Form using bootstrap classes, divs are appended with created elements in script.js-->
                     <form class="form-inline">
                         <div class="div">
                             <div class="div2"></div>
                         <div class="div3 mt-2"></div>
 
-                    <!--for the timer, is removed once "Game Over" page appears-->
+            <!--for the timer, is removed once "Game Over" page appears-->
                         <div class="timer mt-2"></div>
                         </div>
                     </form>
@@ -48,8 +50,6 @@
             </div>
         </div>
     </div>
-
-
 
 
     <!--link to external script-->
