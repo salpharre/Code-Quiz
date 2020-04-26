@@ -81,7 +81,7 @@ let score = 0;
 
 
 //variable for timer, game starts with 100 secs
-let timer = 100;
+let timer = 30;
 
 //prints timer to page
 questionTimerE1.textContent = "Timer: " + timer
@@ -215,7 +215,7 @@ function timerDecreases(){
 //function that resets timer to 100
 function resetTime(){
     clearInterval(timeLeft);
-    timer = 100;
+    timer = 30;
 }
 
 //declaring a variable to grab class
