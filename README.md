@@ -14,7 +14,7 @@ Game was used as practice to delve further into JavaScript.
 
 ### General Info
 
-
+This is a JavaScript-created trivia game revolving around JavaScript facts. It is timed and though the timer resets everytime 
 
 #### Techology
 

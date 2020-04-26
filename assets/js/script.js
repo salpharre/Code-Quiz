@@ -102,12 +102,14 @@ function startTimer(){
 
 }
 
+
 //variable for index of current question and answer
 let computerChoicesIndex = 0;
 
 
 //function to generate question and answers
 function currentQA(){
+
     //if there's another question and set of answers then the next set appears
     if (computerChoicesIndex < computerChoices.length){
         questionE1.innerHTML = computerChoices[computerChoicesIndex].q;
@@ -119,7 +121,6 @@ function currentQA(){
     else {
         leaderboardAppear();
     }
-
 
 startTimer();
 
@@ -169,49 +170,71 @@ function leaderboardAppear(){
     button.addEventListener("click", appendNameToScore); 
     document.querySelector(".div3").appendChild(button);
 
-    
+    //grabs name typed into form and prints to webpage
     function appendNameToScore(event){
+
+        //prevents webpage from refreshing and starting game over
         event.preventDefault();
+
+        //grabs value inputted into form
         let formValue = document.querySelector(".form-control").value
-        //let nameStorage = localStorage.getItem("name")
+        
+        //prints value from formValue to element with the class of name, and therfore onto the webpage
         document.querySelector(".name").textContent = formValue;
 
     }
 }
 
+//prints updated score to webpage
 function scoreIncreases(){
     scoreE1.textContent = score;
 }
 
+//prints timer to webpage
 function timerDecreases(){
     questionTimerE1.textContent = "Timer: " + timer;
 }
 
+//function that resets timer to 100
 function resetTime(){
     clearInterval(timeLeft);
     timer = 100;
 }
 
+//declaring a variable to grab class
 let choiceOne = document.querySelectorAll(".choice");
+
 //for loop for each of the btns in the choiceOne array
 choiceOne.forEach(function(btn){
     btn.addEventListener("click", function(event){
-//setting userGuess to a string that represents choice property of object btn
+
 //setting userGuess for buttons clicked
       let userGuess = event.target.dataset.choice
       if (userGuess === computerChoices[computerChoicesIndex].answer){
+
+        //score increases by one, and prints to the webpage, an alert pops up to tell user they picked correctly
         score++;
         scoreIncreases();
         alert("correct!")
         
+        //updated score is saved to local storage
         localStorage.setItem("savedScores", score);
+
     }
+    //if user does not guess the same answer the computer chooses, an alert pops up
     else if (userGuess !== computerChoices[computerChoicesIndex].answer){
         alert("wrong!");
+
     }
 
+    //computer moves one index number more for the next question to appear
     computerChoicesIndex++;
+
+    //time interval is reset
     resetTime();
+
+    //called function with for loop and timer reset
     currentQA();
-    })
-})
+
+    });
+});
