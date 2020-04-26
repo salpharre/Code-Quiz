@@ -10,11 +10,15 @@ Game was used as practice to delve further into JavaScript.
 
 * Launch
 
+* Future Features
+
 * Resource
 
 ### General Info
 
-This is a JavaScript-created trivia game revolving around JavaScript facts. It is timed and though the timer resets for every question, you only have 
+This is a JavaScript-created trivia game revolving around JavaScript facts. It is timed and though the timer resets for every question, you only have 30 seconds to complete each question.
+
+If you don't answer in 30 seconds, it's GAME OVER. Otherwise, see how many you can get right, and then type your name to claim your score.
 
 #### Techology
 
@@ -27,6 +31,14 @@ This is a JavaScript-created trivia game revolving around JavaScript facts. It i
 Original Launch Date: `April 25, 2020`
 
 (link to pages)
+
+##### Future Features
+
+* Name logged in form remains on page next to score, even after page the re-loads
+
+* Replace alerts with dynamic colors that light up the page
+
+* More to come!
 
 ###### Resource
 
