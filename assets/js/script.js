@@ -82,11 +82,13 @@ let score = 0;
 //variable for timer, game starts with 100 secs
 let timer = 100;
 
+//prints timer to page
 questionTimerE1.textContent = "Timer: " + timer
 
+//declare var with no value, to be declared in a function later
 let timeLeft;
 
-//timer function to start and change every second
+//timer function to start and decrease every second
 function startTimer(){
     timeLeft = setInterval(function(){
         timer--;
@@ -122,13 +124,15 @@ function currentQA(){
         leaderboardAppear();
     }
 
+//re-start timer when function loops
 startTimer();
 
 }
 currentQA();
 
-//function to change the p element with a class of button into a bootstrap button
+//function to clear buttons, timer and p tag to make room for form, submit button and printing score
 function leaderboardAppear(){
+
     //change h1 text to Game. Over.
     questionE1.textContent = "Game" + ". " + "Over" + ".";
 
@@ -145,29 +149,39 @@ function leaderboardAppear(){
     textAreaE1.textContent = localStorage.getItem("savedScores")
     
 
-    
-    let body = document.getElementsByTagName("body")[0];
 
-    //creat new div to nestle under form tag
+    //create new div to nestle under form tag
     let div = document.createElement("div");
+
+    //set attribute for new div
     div.setAttribute("class", "form-group mx-sm-3 mb-2");
+
+    //append new div to element with class of div
     document.querySelector(".div").appendChild(div);
 
     //create new input tag nestled under new div
     let input = document.createElement("input");
+    
+    //sets attributes for new input element
     input.setAttribute("type", "text");
     input.setAttribute("class", "form-control");
     input.setAttribute("placeholder", "Name Here");
+
+    //appends input element to element with div2
     document.querySelector(".div2").appendChild(input);
     
     //button, sibling to new div, child to form tag
     let button = document.createElement("button")
     button.textContent = "Submit";
+
+    //sets attributes for new button
     button.setAttribute("type", "submit");
     button.setAttribute("class", "btn btn-primary mb-2");
 
     //everytime button is clicked the function is called
     button.addEventListener("click", appendNameToScore); 
+
+    //appends newly created button to element with class of div3
     document.querySelector(".div3").appendChild(button);
 
     //grabs name typed into form and prints to webpage
@@ -178,7 +192,7 @@ function leaderboardAppear(){
 
         //grabs value inputted into form
         let formValue = document.querySelector(".form-control").value
-        
+
         //prints value from formValue to element with the class of name, and therfore onto the webpage
         document.querySelector(".name").textContent = formValue;
 
